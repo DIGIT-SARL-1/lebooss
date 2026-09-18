@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="LeBooss aujourd’hui : l’actualité autour des escroqueries en général, la prévention des risques et la confiance en Afrique.">
+  <meta name="theme-color" content="#071d49">
+  <title>LeBooss — Actualité des escroqueries</title>
+  <link rel="icon" type="image/png" sizes="512x512" href="assets/lebooss-favicon-512.png?v=20260917-original">
+  <link rel="apple-touch-icon" href="assets/lebooss-favicon-512.png?v=20260917-original">
+  <link rel="stylesheet" href="styles.css?v=20260916-sprint1">
+  <script src="script.js?v=20260916-scamnews" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenu">Aller au contenu</a>
+
+  <div class="topbar">
+    <div class="container topbar__inner">
+      <p data-i18n="topline">LeBooss aujourd’hui : l’actualité autour des escroqueries en général.</p>
+      <div class="topbar__links">
+        <a href="#actualites" data-i18n="news">Actualités</a>
+        <a href="#aide" data-i18n="help">Besoin d’aide ?</a>
+      </div>
+    </div>
+  </div>
+
+  <header class="site-header" id="accueil" aria-label="En-tête principal">
+    <div class="container nav-wrap">
+      <a class="brand" href="#accueil" aria-label="LeBooss, accueil">
+        <img class="brand__logo" src="assets/lebooss-logo-transparent-v2.png" alt="LeBooss">
+      </a>
+
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">
+        <span></span><span></span><span></span>
+        <span class="sr-only">Ouvrir le menu</span>
+      </button>
+
+      <nav class="main-nav" id="main-nav" aria-label="Navigation principale">
+        <div class="main-nav__links">
+          <div class="nav-menu" id="servicesMenu">
+            <button class="nav-menu__trigger" type="button" aria-expanded="false" aria-controls="servicesMenuPanel">
+              Services <span aria-hidden="true">⌄</span>
+            </button>
+            <div class="nav-menu__panel" id="servicesMenuPanel" hidden>
+              <a href="#covoiturage"><b>CoVoiturage</b><span>Partager un trajet en voiture</span></a>
+              <a href="#comotorage"><b>CoMotorage</b><span>Se déplacer à moto en confiance</span></a>
+              <a href="#copacketage"><b>Copacketage</b><span>Transport et logistique de colis</span></a>
+              <a href="#hebergement"><b>Où passer la nuit</b><span>Trouver un hébergement</span></a>
+              <a href="#racoleur"><b>Racoleur</b><span>Mise en relation locale</span></a>
+              <a href="#touriste"><b>Touriste</b><span>Services utiles aux voyageurs</span></a>
+              <a href="#billetterie"><b>Billets &amp; Tickets</b><span>Concerts, matchs et transports</span></a>
+            </div>
+          </div>
+          <a href="#particuliers" data-i18n="individuals">Particuliers</a>
+          <a href="#entreprises" data-i18n="companies">Entreprises</a>
+          <a href="#rating">Rating</a>
+          <a href="#actualites" data-i18n="news">Actualités</a>
+        </div>
+
+        <div class="nav-actions">
+          <button class="nav-icon-button" id="searchToggle" type="button" aria-label="Rechercher" aria-expanded="false" aria-controls="siteSearchPanel" title="Rechercher">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg>
+          </button>
+          <button class="button button--small button--trip" type="button" data-propose-trip>Proposer un trajet</button>
+          <label class="language-picker language-picker--icon" title="Choisir la langue">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9S14.5 18.4 12 21M12 3C9.5 5.6 8.2 8.6 8.2 12S9.5 18.4 12 21"></path></svg>
+            <span class="sr-only">Choisir la langue</span>
+            <select id="languageSelect" aria-label="Choisir la langue">
+              <option value="fr">FR</option>
+              <option value="en">EN</option>
+            </select>
+          </label>
+          <button class="nav-icon-button" id="accountToggle" type="button" aria-label="Inscription ou connexion" title="Inscription | Connexion">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"></circle><path d="M4.5 20c.8-4.1 3.2-6.2 7.5-6.2s6.7 2.1 7.5 6.2"></path></svg>
+          </button>
+          <button class="button button--small button--report" type="button" data-open-report data-i18n="report">Lanceur d’alerte</button>
+        </div>
+      </nav>
+    </div>
+    <div class="site-search" id="siteSearchPanel" hidden>
+      <div class="site-search__inner" id="siteSearchForm" role="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4.2 4.2"></path></svg>
+        <label class="sr-only" for="siteSearchInput">Rechercher sur LeBooss</label>
+        <input id="siteSearchInput" type="search" placeholder="Rechercher un service, un sujet ou une information…" autocomplete="off">
+        <button type="button" id="searchClose" aria-label="Fermer la recherche">×</button>
+      </div>
+      <div class="site-search__results" id="siteSearchResults" aria-live="polite"></div>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy reveal">
+          <p class="eyebrow" data-i18n="heroEyebrow">La confiance dans l’économie africaine</p>
+          <h1 data-i18n-html="heroTitle">Comprendre la solvabilité.<br><span>Décider avec confiance.</span></h1>
+          <p class="hero__lead" data-i18n="heroLead">LeBooss aujourd’hui : une actualité claire autour des escroqueries en général, pour mieux les comprendre et les éviter.</p>
+          <div class="hero__actions">
+            <a class="button button--yellow" href="#offre" data-i18n="certificate">Obtenir mon certificat</a>
+            <a class="text-link" href="#fonctionnement"><span data-i18n="discover">Découvrir comment ça marche</span> <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="hero__proof">
+            <span>Pour les particuliers</span>
+            <span>Pour les entreprises</span>
+            <span>Protection des données</span>
+          </div>
+        </div>
+
+        <div class="score-stage reveal" aria-label="Exemple d’indice de confiance LeBooss">
+          <div class="score-stage__rings" aria-hidden="true"></div>
+          <div class="score-card">
+            <div class="score-card__top">
+              <span>Indice LeBooss</span>
+              <span class="status-dot">Profil fiable</span>
+            </div>
+            <div class="score-card__value">
+              <strong>184</strong><span>/ 600</span>
+            </div>
+            <div class="score-scale" aria-hidden="true">
+              <span></span><span></span><span></span><span></span>
+              <i style="left: 18%"></i>
+            </div>
+            <p>Plus la valeur est basse, plus le profil est considéré comme fiable pour une transaction.</p>
+            <div class="score-card__meta">
+              <div><b>Identité</b><span>Vérifiée</span></div>
+              <div><b>Situation</b><span>Actualisée</span></div>
+            </div>
+          </div>
+          <aside class="floating-note">
+            <b>100 %</b>
+            <span>Une garantie absolue n’existe jamais.</span>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="trust-strip" aria-label="Les engagements LeBooss">
+      <div class="container trust-strip__grid">
+        <p><b>Une information utile</b><span>pour mieux évaluer le risque</span></p>
+        <p><b>Une preuve partageable</b><span>avec vos partenaires</span></p>
+        <p><b>Une approche locale</b><span>pensée pour l’Afrique</span></p>
+      </div>
+    </section>
+
+    <section class="section mobility-services" id="services-mobilite">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div>
+            <p class="eyebrow">Services du quotidien</p>
+            <h2>Se déplacer, envoyer, séjourner et réserver.</h2>
+          </div>
+          <p>Une base de services conçue pour simplifier les échanges et renforcer la confiance entre voyageurs, prestataires et partenaires.</p>
+        </div>
+        <div class="mobility-grid reveal">
+          <article id="covoiturage"><span aria-hidden="true">🚗</span><h3>CoVoiturage</h3><p>Proposez ou recherchez une place pour partager un trajet en voiture.</p><button type="button" data-propose-trip>Proposer un trajet</button></article>
+          <article id="comotorage"><span aria-hidden="true">🏍️</span><h3>CoMotorage</h3><p>Trouvez un trajet à moto auprès d’un conducteur identifié.</p><a href="#contact">Découvrir →</a></article>
+          <article id="copacketage"><span aria-hidden="true">📦</span><h3>Copacketage</h3><p>Organisez l’acheminement de colis et vos besoins logistiques.</p><a href="#contact">Envoyer un colis →</a></article>
+          <article id="hebergement"><span aria-hidden="true">🛏️</span><h3>Où passer la nuit</h3><p>Repérez des solutions d’hébergement adaptées à votre étape.</p><a href="#contact">Trouver un lieu →</a></article>
+          <article id="racoleur"><span aria-hidden="true">🤝</span><h3>Racoleur</h3><p>Entrez en relation avec un accompagnateur local référencé.</p><a href="#contact">Être accompagné →</a></article>
+          <article id="touriste"><span aria-hidden="true">🧭</span><h3>Touriste</h3><p>Accédez aux informations et services utiles pendant votre séjour.</p><a href="#contact">Préparer mon séjour →</a></article>
+          <article id="billetterie"><span aria-hidden="true">🎟️</span><h3>Billets &amp; Tickets</h3><p>Achetez des billets de concert, match, bus, train et autres événements.</p><a href="#contact">Voir la billetterie →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section intro" id="fonctionnement">
+      <div class="container two-columns">
+        <div class="section-heading reveal">
+          <p class="eyebrow">Scoring &amp; données</p>
+          <h2>Une prévision statistique, pas un jugement.</h2>
+        </div>
+        <div class="intro__copy reveal">
+          <p>La notation utilise les expériences passées pour estimer la probabilité qu’une personne ou une entreprise respecte ses obligations de paiement en continu : maintenant comme à l’avenir.</p>
+          <p>Même lorsqu’une personne a toujours payé conformément à ses contrats, une maladie, une perte d’emploi ou un autre événement imprévu peut survenir. C’est pourquoi une garantie de paiement de 100 % ne peut pas exister.</p>
+          <a class="text-link" href="#scoring">Comprendre la méthode <span aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section risk-observatory" id="observatoire">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div>
+            <p class="eyebrow">Observatoire urbain · Sprint 01</p>
+            <h2 data-i18n="riskTitle">Le risque d’arnaque, ville par ville.</h2>
+          </div>
+          <p>Une première base d’indicateurs pour suivre les signalements, repérer les modes opératoires et mesurer leur impact sur l’activité économique.</p>
+        </div>
+        <div class="risk-dashboard reveal">
+          <div class="risk-map" aria-label="Indice pilote des signalements par ville">
+            <div class="risk-map__head">
+              <div><span class="live-dot"></span> Indice pilote</div>
+              <label for="citySelect">Ville analysée</label>
+              <select id="citySelect">
+                <option value="douala">Douala</option>
+                <option value="yaounde">Yaoundé</option>
+                <option value="bafoussam">Bafoussam</option>
+                <option value="garoua">Garoua</option>
+                <option value="limbe">Limbé</option>
+                <option value="kribi">Kribi</option>
+                <option value="custom">Autre ville…</option>
+              </select>
+              <input id="cityCustom" type="text" placeholder="Écrivez votre ville" autocomplete="address-level2" aria-label="Saisissez votre ville" hidden>
+            </div>
+            <div class="city-score">
+              <div class="city-score__gauge" id="cityGauge"><strong id="cityScore">68</strong><span>/100</span></div>
+              <div>
+                <p class="eyebrow" id="cityLevel">Vigilance élevée</p>
+                <h3 id="cityName">Douala</h3>
+                <p id="cityTrend">Forte concentration de signalements liés aux paiements mobiles et aux faux commerces en ligne.</p>
+              </div>
+            </div>
+            <div class="risk-bars" id="riskBars" aria-label="Répartition des signalements">
+              <div><span>Mobile money</span><i><b style="width:82%"></b></i><strong>41%</strong></div>
+              <div><span>Faux commerce</span><i><b style="width:60%"></b></i><strong>30%</strong></div>
+              <div><span>Usurpation</span><i><b style="width:38%"></b></i><strong>19%</strong></div>
+              <div><span>Autres</span><i><b style="width:20%"></b></i><strong>10%</strong></div>
+            </div>
+          </div>
+          <aside class="risk-context">
+            <p class="eyebrow">Indicateur économique</p>
+            <h3>Transformer les alertes en décisions utiles.</h3>
+            <div class="metric-list">
+              <div><span>Signalements qualifiés</span><strong id="cityReports">1 284</strong></div>
+              <div><span>Tendance sur 30 jours</span><strong id="cityChange">+12%</strong></div>
+              <div><span>Confiance des données</span><strong id="cityConfidence">Pilote</strong></div>
+            </div>
+            <p class="data-note">Les chiffres affichés sont des données de démonstration. La publication d’un taux officiel exigera des signalements vérifiés, dédupliqués et rapportés à la population de chaque ville.</p>
+            <button class="button button--yellow" type="button" data-open-report>Contribuer aux données</button>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services" id="particuliers">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div>
+            <p class="eyebrow">Nos solutions</p>
+            <h2>La bonne information au bon moment.</h2>
+          </div>
+          <div class="segment-control" role="tablist" aria-label="Choisir un profil">
+            <button type="button" role="tab" aria-selected="true" data-segment="particulier">Particulier</button>
+            <button type="button" role="tab" aria-selected="false" data-segment="entreprise">Entreprise</button>
+            <button type="button" role="tab" aria-selected="false" data-segment="huissier">Huissier</button>
+          </div>
+        </div>
+
+        <div class="solutions-grid reveal" data-panel="particulier">
+          <article class="solution-card solution-card--featured">
+            <p class="card-index">01</p>
+            <h3>Certificat de bonité</h3>
+            <p>Une preuve objective et actualisée de votre capacité de paiement, conçue pour être transmise à un propriétaire, un employeur ou un partenaire commercial.</p>
+            <a href="#offre">Voir le certificat <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="solution-card">
+            <p class="card-index">02</p>
+            <h3>LeBooss ID</h3>
+            <p>Vérifiez votre identité et réduisez les risques liés aux faux documents dans vos futures transactions.</p>
+            <a href="#contact">En savoir plus <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="solution-card">
+            <p class="card-index">03</p>
+            <h3>BonitéControl</h3>
+            <p>Consultez les informations utiles, comprenez votre profil et signalez une donnée à corriger.</p>
+            <a href="#droits">Mes droits <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+
+        <div class="solutions-grid" data-panel="entreprise" hidden>
+          <article class="solution-card solution-card--featured">
+            <p class="card-index">01</p>
+            <h3>Évaluation client</h3>
+            <p>Appuyez vos décisions commerciales sur des informations de bonité actualisées et pertinentes.</p>
+            <a href="#entreprises">Solutions B2C <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="solution-card">
+            <p class="card-index">02</p>
+            <h3>Analyse d’entreprise</h3>
+            <p>Combinez les données de l’entreprise et les informations pertinentes sur ses représentants.</p>
+            <a href="#entreprises">Solutions B2B <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="solution-card">
+            <p class="card-index">03</p>
+            <h3>Suivi du risque</h3>
+            <p>Suivez l’évolution de vos relations commerciales tout au long du cycle de vie client.</p>
+            <a href="#contact">Devenir partenaire <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+
+        <div class="solutions-grid" data-panel="huissier" hidden>
+          <article class="solution-card solution-card--featured">
+            <p class="card-index">01</p>
+            <h3>LeBooss Huissier</h3>
+            <p>Une solution de suivi à distance destinée à faciliter la résolution des dossiers et la régularisation des situations.</p>
+            <a href="#contact">Demander une présentation <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="solution-card">
+            <p class="card-index">02</p>
+            <h3>IdentCheckbox</h3>
+            <p>Renforcez l’identification des personnes concernées et limitez les erreurs ou tentatives de fraude.</p>
+            <a href="#contact">Découvrir <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="solution-card">
+            <p class="card-index">03</p>
+            <h3>Signalement</h3>
+            <p>Documentez une situation litigieuse dans un parcours clair, traçable et respectueux des droits.</p>
+            <button class="card-link" type="button" data-open-report>Lanceur d’alerte <span aria-hidden="true">→</span></button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section ecosystem" id="ecosysteme">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div>
+            <p class="eyebrow">L’écosystème LeBooss</p>
+            <h2 data-i18n="ecosystemTitle">Huit expertises, un même réflexe de confiance.</h2>
+          </div>
+          <p>Chaque Booss répond à un moment précis : prévenir, vérifier, négocier, enquêter, conseiller ou développer.</p>
+        </div>
+        <p class="booss-flow-note reveal"><b>LeBooss Entrant &amp; LeBooss Sortant</b><span>Toutes les expertises accompagnent aussi bien l’entrée en relation que le suivi et la sortie d’une transaction.</span></p>
+        <div class="booss-grid reveal">
+          <article><span>01</span><h3>LeBooss Huissier</h3><p>Suivi des dossiers, preuves et exécution encadrée.</p></article>
+          <article><span>02</span><h3>LeBooss Détektiv</h3><p>Vérifications et investigations documentées.</p></article>
+          <article><span>03</span><h3>LeBooss International</h3><p>Confiance et vérification pour les relations transfrontalières.</p></article>
+          <article><span>04</span><h3>LeBooss Business</h3><p>Analyse des partenaires, marchés et risques commerciaux.</p></article>
+          <article><span>05</span><h3>LeBooss Professional</h3><p>Réputation, identité et parcours des professionnels.</p></article>
+          <article><span>06</span><h3>LeBooss Conseils</h3><p>Prévention, stratégie et accompagnement confidentiel.</p></article>
+          <article class="booss-card--rating"><span>07</span><h3>LeBooss Rating</h3><p>Indicateurs de bonité et de croissance économique.</p><a href="#rating">Voir le rating →</a></article>
+          <article class="booss-card--boss"><span>08</span><h3>LeBoss</h3><p>Négociation et recherche de solutions équilibrées.</p><a href="#arrangement">Voir les scénarios →</a></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section offer" id="offre">
+      <div class="container offer__grid">
+        <div class="offer__visual reveal">
+          <div class="certificate">
+            <div class="certificate__header">
+              <img class="certificate__logo" src="assets/lebooss-logo-transparent-v2.png" alt="LeBooss">
+              <span>BonitätsCheck</span>
+            </div>
+            <div class="certificate__body">
+              <p>Certificat de bonité</p>
+              <strong>Situation vérifiée</strong>
+              <div class="certificate__lines"><i></i><i></i><i></i></div>
+            </div>
+            <div class="certificate__seal">LB</div>
+          </div>
+        </div>
+        <div class="offer__copy reveal">
+          <p class="eyebrow">LeBooss BonitätsCheck</p>
+          <h2>Un document qui crée la confiance nécessaire.</h2>
+          <p>Le certificat fournit une preuve actualisée de votre solvabilité et ne contient que les informations pertinentes pour conclure un contrat. Votre vie privée reste protégée.</p>
+          <ul class="check-list">
+            <li>Disponible en téléchargement PDF</li>
+            <li>Conçu pour les propriétaires et employeurs</li>
+            <li>Authenticité vérifiable avec un code personnel</li>
+          </ul>
+          <div class="price-row">
+            <div><strong>20 000 FCFA</strong><span>paiement unique</span></div>
+            <a class="button button--yellow" href="#contact">Commander</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section business" id="entreprises">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div>
+            <p class="eyebrow">Solutions entreprises</p>
+            <h2>Une gestion du risque plus complète.</h2>
+          </div>
+          <p>De l’entrée en relation au suivi client, LeBooss aide les organisations à concilier décisions rapides, expérience fluide et maîtrise du risque.</p>
+        </div>
+
+        <div class="business-grid reveal">
+          <article>
+            <span>01</span>
+            <h3>Finance consulting</h3>
+            <p>Des décisions fondées sur des informations solides et actualisées.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Planification stratégique</h3>
+            <p>Une vision globale du risque sur tout le cycle de vie client.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Analyse de marché</h3>
+            <p>Des signaux structurés pour comprendre un secteur et ses opportunités.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Structure RH</h3>
+            <p>Des processus plus fiables pour vos équipes et vos partenaires.</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>Branding &amp; marketing</h3>
+            <p>Une image de marque alignée avec votre promesse de confiance.</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>Relations extérieures</h3>
+            <p>Un cadre clair pour développer des collaborations durables.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section methodology" id="scoring">
+      <div class="container methodology__grid">
+        <div class="methodology__copy reveal">
+          <p class="eyebrow">Booss Scoring</p>
+          <h2>Rendre le score compréhensible.</h2>
+          <p>Un score est une indication statistique. Il aide à calculer les risques, mais ne remplace jamais la décision finale d’une entreprise ni l’analyse du contexte.</p>
+          <div class="principles">
+            <div><b>Réciprocité</b><span>Des partenaires contribuent à l’actualité des informations.</span></div>
+            <div><b>Proportionnalité</b><span>Seules les données pertinentes doivent être communiquées.</span></div>
+            <div><b>Rectification</b><span>Chaque personne doit pouvoir vérifier et contester ses données.</span></div>
+          </div>
+        </div>
+
+        <div class="simulator reveal" id="simulateur">
+          <div class="simulator__header">
+            <div>
+              <p>Simulateur pédagogique</p>
+              <h3>Estimez votre profil</h3>
+            </div>
+            <div class="simulator__score"><strong id="scoreValue">238</strong><span>/600</span></div>
+          </div>
+
+          <label for="payments">Historique de paiement</label>
+          <select id="payments">
+            <option value="0">Toujours à jour</option>
+            <option value="55">Quelques retards régularisés</option>
+            <option value="130">Incidents non régularisés</option>
+          </select>
+
+          <label for="identity">Identité vérifiée</label>
+          <select id="identity">
+            <option value="0">Oui</option>
+            <option value="35">Non</option>
+          </select>
+
+          <label for="history">Ancienneté des relations financières</label>
+          <input id="history" type="range" min="0" max="10" value="4" aria-describedby="historyValue">
+          <span class="range-value" id="historyValue">4 ans</span>
+
+          <label for="requests">Demandes récentes</label>
+          <input id="requests" type="range" min="0" max="10" value="2" aria-describedby="requestsValue">
+          <span class="range-value" id="requestsValue">2 demandes</span>
+
+          <div class="simulator__result" aria-live="polite">
+            <span id="scoreLabel">Profil favorable</span>
+            <i><b id="scoreBar" style="width: 35%"></b></i>
+          </div>
+          <p class="fine-print">Cette estimation est illustrative et ne constitue ni un score officiel ni une décision de crédit.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rating" id="rating">
+      <div class="container rating__grid">
+        <div class="rating__copy reveal">
+          <p class="eyebrow">LeBooss Rating</p>
+          <h2 data-i18n="ratingTitle">Bonité aujourd’hui. Capacité de croissance demain.</h2>
+          <p>Le rating met en perspective la continuité des paiements et la dynamique économique. Il ne prédit pas l’avenir avec certitude : il produit un signal explicable, daté et révisable.</p>
+          <ul class="rating-legend">
+            <li><i class="is-green"></i><span><b>Solide</b> — continuité favorable</span></li>
+            <li><i class="is-yellow"></i><span><b>À suivre</b> — contexte en évolution</span></li>
+            <li><i class="is-pink"></i><span><b>À vérifier</b> — informations complémentaires requises</span></li>
+          </ul>
+        </div>
+        <div class="rating-card reveal">
+          <div class="rating-card__head"><span>Profil entreprise · Démonstration</span><b>Mis à jour ce mois</b></div>
+          <div class="rating-card__score"><strong>B+</strong><div><b>Perspective positive</b><span>Niveau de confiance : modéré</span></div></div>
+          <div class="rating-indicators">
+            <div><span>Continuité de paiement</span><i><b style="width:84%"></b></i><strong>84</strong></div>
+            <div><span>Régularité des revenus</span><i><b style="width:72%"></b></i><strong>72</strong></div>
+            <div><span>Croissance de l’activité</span><i><b style="width:66%"></b></i><strong>66</strong></div>
+            <div><span>Charge d’engagement</span><i><b style="width:48%"></b></i><strong>48</strong></div>
+            <div><span>Identité &amp; conformité</span><i><b style="width:92%"></b></i><strong>92</strong></div>
+          </div>
+          <p>Un bon historique n’est jamais une garantie de paiement à 100 %. Maladie, perte d’emploi, choc de marché ou autre événement imprévu peuvent modifier la capacité future.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section arrangement" id="arrangement">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">LeBoss · Négociation</p>
+          <h2 data-i18n="arrangementTitle">Trois scénarios pour renouer le dialogue.</h2>
+        </div>
+        <div class="scenario-grid reveal">
+          <article><span>Scénario 01</span><h3>Retard ponctuel</h3><p>Un imprévu a créé un décalage de paiement. Les parties proposent un nouvel échéancier clair avec rappels consentis.</p><button type="button" data-scenario="retard">Démarrer ce parcours →</button></article>
+          <article><span>Scénario 02</span><h3>Dette contestée</h3><p>Le montant, le service ou la preuve est discuté. Chaque partie dépose ses pièces avant une proposition de médiation.</p><button type="button" data-scenario="contestation">Démarrer ce parcours →</button></article>
+          <article><span>Scénario 03</span><h3>Activité fragilisée</h3><p>Une baisse d’activité menace plusieurs engagements. Un plan progressif protège la continuité économique et les créanciers.</p><button type="button" data-scenario="fragilite">Démarrer ce parcours →</button></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section about" id="apropos">
+      <div class="container about__grid">
+        <div class="about__statement reveal">
+          <p class="eyebrow">À propos de LeBooss</p>
+          <h2>Mettre tout le monde sur un pied d’égalité dans les affaires.</h2>
+        </div>
+        <div class="about__details reveal">
+          <p>Fondé en 2024, LeBooss développe des services de management du risque économique pour les particuliers et les entreprises en Afrique.</p>
+          <p>Notre ambition est simple : permettre à chacun de mieux connaître un partenaire avant de lui faire confiance, éviter les pièges commerciaux et construire une économie plus transparente.</p>
+          <div class="about__values">
+            <span>Professionnalisme</span>
+            <span>Fiabilité</span>
+            <span>Éducation financière</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section news" id="actualites">
+      <div class="container">
+        <div class="section-heading section-heading--row reveal">
+          <div>
+            <p class="eyebrow">Actualité économique locale</p>
+            <h2>Les tendances qui changent les entreprises.</h2>
+          </div>
+          <a class="text-link" href="#contact">Voir les prochains événements <span aria-hidden="true">→</span></a>
+        </div>
+        <div class="news-grid reveal">
+          <article class="news-card news-card--main">
+            <div class="news-card__visual"><span>IA</span><b>VEILLE</b></div>
+            <div>
+              <p class="eyebrow">Entreprises locales · Risques numériques</p>
+              <h3>Faux ordres de virement et contenus générés par IA : les nouveaux signaux à vérifier</h3>
+              <p>Une veille pratique pour aider les équipes à reconnaître l’usurpation d’un dirigeant, les changements suspects de coordonnées bancaires et les messages artificiellement crédibles.</p>
+            </div>
+          </article>
+          <article class="quote-card">
+            <blockquote>« Créer ensemble la confiance dans les affaires de tous les jours. »</blockquote>
+            <p>La mission LeBooss</p>
+          </article>
+        </div>
+        <div class="trend-grid reveal" aria-label="Veille économique et fraude">
+          <article>
+            <span>18 FÉV. 2026 · ALERTE</span>
+            <h3>Investissements à haut rendement, prêts mobiles et mobile money sous surveillance</h3>
+            <p>Ces mécanismes figurent parmi les cibles d’une récente opération panafricaine contre les arnaques en ligne.</p>
+            <a href="https://www.interpol.int/News-and-Events/News/2026/Major-operation-in-Africa-targeting-online-scams-nets-651-arrests-recovers-USD-4.3-million" target="_blank" rel="noopener">Lire la source INTERPOL ↗</a>
+          </article>
+          <article>
+            <span>VEILLE 2025 · ENTREPRISES</span>
+            <h3>Le faux ordre de virement devient plus crédible avec l’IA</h3>
+            <p>Le phishing ciblé, l’usurpation de dirigeants et les contenus générés par IA exigent une double vérification hors messagerie.</p>
+            <a href="https://www.interpol.int/News-and-Events/News/2025/New-INTERPOL-report-warns-of-sharp-rise-in-cybercrime-in-Africa" target="_blank" rel="noopener">Voir l’évaluation INTERPOL ↗</a>
+          </article>
+          <article>
+            <span>ÉCONOMIE MOBILE · CONFIANCE</span>
+            <h3>La lutte contre la fraude devient un indicateur de croissance numérique</h3>
+            <p>La confiance des utilisateurs conditionne l’adoption durable des paiements et services financiers mobiles.</p>
+            <a href="https://www.gsma.com/solutions-and-impact/connectivity-for-good/mobile-economy/africa/" target="_blank" rel="noopener">Suivre la veille GSMA ↗</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section testimonials">
+      <div class="container">
+        <p class="eyebrow reveal">Témoignages</p>
+        <h2 class="reveal">La confiance racontée par nos utilisateurs.</h2>
+        <div class="testimonial-track reveal">
+          <article>
+            <p>« Le rapport de crédit LeBooss m’a aidée à présenter un dossier plus clair pour obtenir mon premier appartement. »</p>
+            <div><b>Clarisse B. K.</b><span>Product &amp; Casting Manager</span></div>
+          </article>
+          <article>
+            <p>« Les informations de bonité permettent aux opérateurs qui accordent un service avant paiement de mieux évaluer la relation. »</p>
+            <div><b>Edward Naoussi</b><span>Direction générale</span></div>
+          </article>
+          <article>
+            <p>« Le certificat associe une preuve de solvabilité, la protection de la vie privée et des éléments de vérification. »</p>
+            <div><b>Charly P.</b><span>Data Scientist</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section rights" id="droits">
+      <div class="container rights__grid">
+        <div class="rights__intro reveal">
+          <p class="eyebrow">Vos droits</p>
+          <h2>Vos données doivent rester sous votre contrôle.</h2>
+          <p>Consulter, comprendre, corriger ou signaler : LeBooss place ces actions au cœur de la relation de confiance.</p>
+        </div>
+        <div class="accordion reveal" id="aide">
+          <details open>
+            <summary>Consulter mes informations <span>+</span></summary>
+            <p>Demandez un aperçu des informations utilisées pour l’évaluation de votre profil.</p>
+          </details>
+          <details>
+            <summary>Corriger une information <span>+</span></summary>
+            <p>Signalez une donnée inexacte et joignez les justificatifs nécessaires à son examen.</p>
+          </details>
+          <details>
+            <summary>Lanceur d’alerte <span>+</span></summary>
+            <p>Utilisez le formulaire de contact en choisissant « Lanceur d’alerte » afin que votre demande soit orientée correctement.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__copy reveal">
+          <p class="eyebrow">Parlons de votre besoin</p>
+          <h2>Construisons une relation de confiance.</h2>
+          <p>Vous êtes un particulier, une entreprise, un bailleur ou un professionnel du droit ? Présentez-nous votre besoin.</p>
+          <div class="contact__meta">
+            <p><span>Zone d’intervention</span><b>Afrique</b></p>
+            <p><span>Disponibilité numérique</span><b>24 h/24 · 7 j/7</b></p>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contactForm">
+          <div class="field-row">
+            <label>Nom complet<input type="text" name="name" autocomplete="name" required></label>
+            <label>Téléphone<input type="tel" name="phone" autocomplete="tel" required></label>
+          </div>
+          <label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label>
+          <label>Votre besoin
+            <select name="subject" required>
+              <option value="">Choisir un sujet</option>
+              <option>Certificat de bonité</option>
+              <option>Solution entreprise</option>
+              <option>LeBooss Huissier</option>
+              <option>Proposer un trajet</option>
+              <option>Billets &amp; Tickets</option>
+              <option>Racoleur / Touriste</option>
+              <option>Négociation</option>
+              <option>Correction de données</option>
+              <option>Lanceur d’alerte</option>
+            </select>
+          </label>
+          <label>Message<textarea name="message" rows="4" required></textarea></label>
+          <button class="button button--yellow" type="submit">Envoyer ma demande</button>
+          <p class="form-status" id="formStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__top">
+      <div>
+        <a class="brand brand--footer" href="#accueil">
+          <img class="brand__logo brand__logo--footer" src="assets/lebooss-logo-transparent-v2.png" alt="LeBooss">
+        </a>
+        <p>LeBooss aujourd’hui : l’actualité autour des escroqueries en général.</p>
+        <div class="social-links" role="group" aria-label="Réseaux sociaux LeBooss">
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 8H17V4.5c-.4-.1-1.8-.2-3.4-.2-3.3 0-5.6 2-5.6 5.8V13H4.5v4H8v7h4.3v-7h3.6l.6-4h-4.2v-2.5c0-1.2.3-2.5 2.2-2.5Z"></path></svg></a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><circle cx="17.5" cy="6.5" r="1"></circle></svg></a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8.5V20M5 4.5v.1M10 20v-7c0-2.5 4-3.3 4-1v9M10 10v10M14 13c0-3.5 5-4.3 5 0v7"></path></svg></a>
+          <a href="https://x.com/" target="_blank" rel="noopener" aria-label="X" title="X"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 4 14 16M19 4 5 20"></path></svg></a>
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12c0 4-.5 6-1.3 6.7S16 20 12 20s-6.9-.5-7.7-1.3S3 16 3 12s.5-6 1.3-6.7S8 4 12 4s6.9.5 7.7 1.3S21 8 21 12Z"></path><path d="m10 9 5 3-5 3Z"></path></svg></a>
+        </div>
+      </div>
+      <div>
+        <h3>Particuliers</h3>
+        <a href="#offre">Certificat de bonité</a>
+        <a href="#simulateur">Simulateur</a>
+        <a href="#droits">Vos droits</a>
+      </div>
+      <div>
+        <h3>Entreprises</h3>
+        <a href="#entreprises">Solutions B2B</a>
+        <a href="#entreprises">Solutions B2C</a>
+        <a href="#contact">Devenir partenaire</a>
+      </div>
+      <div>
+        <h3>LeBooss</h3>
+        <a href="#apropos">À propos</a>
+        <a href="#actualites">Actualités &amp; événements</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> LeBooss. Tous droits réservés.</p>
+      <div><a href="#droits">Confidentialité</a><a href="#droits">Mentions légales</a></div>
+    </div>
+  </footer>
+
+  <dialog class="account-dialog" id="accountDialog" aria-labelledby="accountTitle">
+    <form class="account-card" id="accountForm">
+      <button class="dialog-close" type="button" data-close-account aria-label="Fermer">×</button>
+      <p class="eyebrow">Espace LeBooss</p>
+      <h2 id="accountTitle">Connexion ou inscription</h2>
+      <p>Connectez-vous à votre espace ou commencez la création de votre compte.</p>
+      <label>Adresse e-mail<input type="email" name="accountEmail" autocomplete="email" required></label>
+      <label>Mot de passe<input type="password" name="accountPassword" autocomplete="current-password" minlength="8" required></label>
+      <div class="account-actions">
+        <button class="button button--navy" type="submit" value="login">Se connecter</button>
+        <button class="button button--yellow" type="submit" value="signup">Créer un compte</button>
+      </div>
+      <p class="form-status" id="accountStatus" aria-live="polite"></p>
+    </form>
+  </dialog>
+
+  <dialog class="report-dialog" id="reportDialog" aria-labelledby="reportTitle">
+    <div class="report-shell">
+      <header class="report-head">
+        <div>
+          <p class="eyebrow">LeBooss Alerte</p>
+          <h2 id="reportTitle" data-i18n="report">Lanceur d’alerte</h2>
+          <p data-i18n="reportIntro">Votre récit peut être complété progressivement. Commencez avec ce que vous savez aujourd’hui.</p>
+        </div>
+        <button class="dialog-close" type="button" data-close-report aria-label="Fermer">×</button>
+      </header>
+      <div class="report-progress" aria-label="Progression du formulaire">
+        <span class="is-active" data-progress="1"><b>1</b> Situation</span>
+        <span data-progress="2"><b>2</b> Identité</span>
+        <span data-progress="3"><b>3</b> Adresse</span>
+        <span data-progress="4"><b>4</b> Faits</span>
+        <span data-progress="5"><b>5</b> Pièces</span>
+      </div>
+      <form id="reportForm">
+        <section class="report-step is-active" data-step="1">
+          <p class="step-kicker">Étape 1 sur 5</p>
+          <h3>Quel signalement souhaitez-vous faire ?</h3>
+          <div class="scenario-options">
+            <label><input type="radio" name="abuseType" value="mobile-money" required><span><b>Paiement ou mobile money</b><small>Faux transfert, retrait, code secret, remboursement</small></span></label>
+            <label><input type="radio" name="abuseType" value="commerce"><span><b>Achat, vente ou livraison</b><small>Fausse boutique, acompte, produit non livré</small></span></label>
+            <label><input type="radio" name="abuseType" value="identity"><span><b>Usurpation ou manipulation IA</b><small>Faux profil, voix, vidéo ou message d’un proche</small></span></label>
+            <label><input type="radio" name="abuseType" value="investment"><span><b>Investissement ou emploi</b><small>Rendement garanti, prêt fictif, frais de recrutement</small></span></label>
+            <label><input type="radio" name="abuseType" value="business"><span><b>Entreprise ou facture</b><small>Faux fournisseur, ordre de virement, coordonnées modifiées</small></span></label>
+            <label><input type="radio" name="abuseType" value="other"><span><b>Autre situation</b><small>Extorsion, logement, terrain, relation ou autre</small></span></label>
+          </div>
+          <label class="consent request-option"><input type="checkbox" name="requestCurrentValues" value="yes"> <span><b>Je souhaite aussi recevoir gratuitement un aperçu de mes données</b><small>Inclut, lorsqu’elles sont disponibles, les valeurs de probabilité communiquées à des partenaires contractuels durant les 12 derniers mois.</small></span></label>
+        </section>
+
+        <section class="report-step" data-step="2" hidden>
+          <p class="step-kicker">Étape 2 sur 5</p>
+          <h3>Vos données personnelles</h3>
+          <div class="field-row field-row--three">
+            <label>Civilité<select name="civility" required><option value="">Choisir</option><option>Madame</option><option>Monsieur</option><option>Autre</option></select></label>
+            <label>Prénom<input type="text" name="firstName" autocomplete="given-name" required></label>
+            <label>Nom<input type="text" name="lastName" autocomplete="family-name" required></label>
+          </div>
+          <div class="field-row">
+            <label>Date de naissance<input type="date" name="birthDate" autocomplete="bday" required></label>
+            <label>Lieu de naissance<input type="text" name="birthPlace" required></label>
+          </div>
+          <label>Nom de naissance ou nom avant mariage <span class="optional">Facultatif</span><input type="text" name="birthName"></label>
+          <div class="field-row">
+            <label>Téléphone principal<input type="tel" name="primaryPhone" autocomplete="tel" required></label>
+            <label>Deuxième téléphone <span class="optional">Facultatif</span><input type="tel" name="secondaryPhone"></label>
+          </div>
+          <div class="field-row">
+            <label>Numéro WhatsApp <span class="optional">Facultatif</span><input type="tel" name="whatsapp"></label>
+            <label>Adresse e-mail<input type="email" name="email" autocomplete="email" required></label>
+          </div>
+        </section>
+
+        <section class="report-step" data-step="3" hidden>
+          <p class="step-kicker">Étape 3 sur 5</p>
+          <h3>Votre adresse actuelle</h3>
+          <div class="field-row">
+            <label>Nom de la rue<input type="text" name="street" autocomplete="street-address" required></label>
+            <label>Numéro de maison<input type="text" name="houseNumber" required></label>
+          </div>
+          <div class="field-row field-row--three">
+            <label>Quartier<input type="text" name="district" required></label>
+            <label>Ville ou village<input type="text" name="cityVillage" autocomplete="address-level2" required></label>
+            <label>Boîte ou code postal <span class="optional">Facultatif</span><input type="text" name="postalCode" autocomplete="postal-code"></label>
+          </div>
+          <fieldset class="inline-choice">
+            <legend>Votre adresse a-t-elle changé pendant les 12 derniers mois ?</legend>
+            <label><input type="radio" name="addressChanged" value="no" required checked> Non</label>
+            <label><input type="radio" name="addressChanged" value="yes"> Oui</label>
+          </fieldset>
+          <div class="previous-address" id="previousAddress" hidden>
+            <h4>Adresse antérieure</h4>
+            <div class="field-row">
+              <label>Ancienne rue<input type="text" name="previousStreet" data-required-if-previous></label>
+              <label>Ancien numéro de maison<input type="text" name="previousHouseNumber" data-required-if-previous></label>
+            </div>
+            <div class="field-row">
+              <label>Ancien lieu d’habitation<input type="text" name="previousCity" data-required-if-previous></label>
+              <label>Ancienne boîte ou code postal <span class="optional">Facultatif</span><input type="text" name="previousPostalCode"></label>
+            </div>
+          </div>
+        </section>
+
+        <section class="report-step" data-step="4" hidden>
+          <p class="step-kicker">Étape 4 sur 5</p>
+          <h3>Décrivez les faits et les preuves</h3>
+          <div class="field-row">
+            <label>Date approximative des faits<input type="date" name="incidentDate" required></label>
+            <label>Canal utilisé<select name="channel" required><option value="">Choisir</option><option>Appel / SMS</option><option>WhatsApp / messagerie</option><option>Réseau social</option><option>Site web / application</option><option>En personne</option><option>E-mail</option></select></label>
+          </div>
+          <div class="field-row">
+            <label>Montant concerné (FCFA) <span class="optional">Facultatif</span><input type="number" name="amount" min="0" step="500" placeholder="0"></label>
+            <label>Identité ou contact utilisé par l’auteur <span class="optional">Facultatif</span><input type="text" name="suspect" placeholder="Nom, numéro, compte, page ou entreprise"></label>
+          </div>
+          <label>Votre récit<textarea name="story" rows="5" minlength="30" required placeholder="Décrivez la promesse reçue, les demandes faites, les paiements et les actions déjà entreprises…"></textarea></label>
+          <p class="field-label">Éléments déjà conservés</p>
+          <div class="evidence-checks">
+            <label><input type="checkbox" name="evidence" value="screenshots"> Captures d’écran</label>
+            <label><input type="checkbox" name="evidence" value="receipt"> Reçu ou transaction</label>
+            <label><input type="checkbox" name="evidence" value="audio"> Audio ou appel</label>
+            <label><input type="checkbox" name="evidence" value="contract"> Contrat ou facture</label>
+            <label><input type="checkbox" name="evidence" value="witness"> Témoin</label>
+            <label><input type="checkbox" name="evidence" value="none"> Aucune pour l’instant</label>
+          </div>
+          <label>Références utiles <span class="optional">Facultatif</span><textarea name="references" rows="3" placeholder="ID de transaction, numéro de dossier, lien du profil ou toute autre référence…"></textarea></label>
+          <label>Niveau d’urgence<select name="urgency" required><option value="standard">Suivi normal</option><option value="ongoing">La fraude est encore en cours</option><option value="immediate">Menace ou danger immédiat</option></select></label>
+          <p class="urgent-note">En cas de danger immédiat, contactez d’abord les services d’urgence ou l’autorité compétente de votre zone.</p>
+        </section>
+
+        <section class="report-step" data-step="5" hidden>
+          <p class="step-kicker">Étape 5 sur 5</p>
+          <h3>Pièces d’identité et validation</h3>
+          <p class="privacy-explainer">Pour faciliter votre identification, joignez une copie lisible recto-verso d’un document valide. Elle doit permettre de vérifier vos nom, prénom, adresse, date et lieu de naissance ainsi que la date d’expiration.</p>
+          <fieldset class="inline-choice">
+            <legend>Origine du document d’identité</legend>
+            <label><input type="radio" name="documentRegion" value="africa" required checked> Document délivré en Afrique</label>
+            <label><input type="radio" name="documentRegion" value="international"> Document délivré dans un autre pays</label>
+          </fieldset>
+          <label>Type de document<select name="documentType" id="documentType" required></select></label>
+          <div class="field-row">
+            <label class="file-drop">Recto du document<input type="file" name="identityFront" accept="image/*,.pdf" required><span>Image ou PDF · 10 Mo maximum</span></label>
+            <label class="file-drop">Verso du document<input type="file" name="identityBack" accept="image/*,.pdf" required><span>Image ou PDF · 10 Mo maximum</span></label>
+          </div>
+          <label class="file-drop">Preuves du signalement <span class="optional">Facultatif</span><input type="file" name="evidenceFiles" multiple accept="image/*,.pdf,.mp3,.mp4"><span>Captures, reçus, PDF, audio ou vidéo · 10 Mo maximum par fichier</span></label>
+          <p class="privacy-note"><b>Protection de vos données :</b> vous pouvez masquer les informations non essentielles au traitement, notamment la taille, la couleur des yeux ou d’autres mentions sans rapport avec votre demande.</p>
+          <label>Relation avec les faits<select name="relationship" required><option value="victim">Je suis directement concerné(e)</option><option value="witness">Je suis témoin</option><option value="company">Je représente une entreprise</option><option value="helper">J’aide une personne concernée</option></select></label>
+          <label class="consent"><input type="checkbox" name="consent" required> <span>Je confirme que ces informations sont sincères à ma connaissance et j’accepte leur examen dans le respect de la confidentialité.</span></label>
+          <div class="report-summary"><b>Vous pourrez compléter ce signalement plus tard.</b><span>Un brouillon sans les fichiers joints est conservé uniquement sur cet appareil. Une référence personnelle sera créée à la validation.</span></div>
+        </section>
+
+        <div class="report-actions">
+          <button class="text-button" type="button" id="reportBack" hidden>← Retour</button>
+          <span class="report-draft" id="draftStatus">Brouillon conservé sur cet appareil</span>
+          <button class="button button--navy" type="button" id="reportNext" data-i18n="continue">Continuer</button>
+          <button class="button button--report" type="submit" id="reportSubmit" hidden data-i18n="sendReport">Envoyer le signalement</button>
+        </div>
+        <p class="form-status" id="reportStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </dialog>
+
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Préférences de confidentialité" aria-live="polite">
+    <p><b>Votre confidentialité compte.</b> Ce site de démonstration n’utilise que les fonctions nécessaires à son affichage.</p>
+    <button class="button button--small button--navy" type="button" id="cookieAccept">J’ai compris</button>
+  </div>
+</body>
+</html>
