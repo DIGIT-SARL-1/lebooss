@@ -8,8 +8,8 @@
   <title>LeBooss — Actualité des escroqueries</title>
   <link rel="icon" type="image/png" sizes="512x512" href="assets/lebooss-favicon-512.png?v=20260917-original">
   <link rel="apple-touch-icon" href="assets/lebooss-favicon-512.png?v=20260917-original">
-  <link rel="stylesheet" href="styles.css?v=20260916-sprint1">
-  <script src="script.js?v=20260916-scamnews" defer></script>
+  <link rel="stylesheet" href="styles.css?v=20260922-booss">
+  <script src="script.js?v=20260922-booss" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#contenu">Aller au contenu</a>
@@ -322,14 +322,14 @@
         </div>
         <p class="booss-flow-note reveal"><b>LeBooss Entrant &amp; LeBooss Sortant</b><span>Toutes les expertises accompagnent aussi bien l’entrée en relation que le suivi et la sortie d’une transaction.</span></p>
         <div class="booss-grid reveal">
-          <article><span>01</span><h3>LeBooss Huissier</h3><p>Suivi des dossiers, preuves et exécution encadrée.</p></article>
-          <article><span>02</span><h3>LeBooss Détektiv</h3><p>Vérifications et investigations documentées.</p></article>
-          <article><span>03</span><h3>LeBooss International</h3><p>Confiance et vérification pour les relations transfrontalières.</p></article>
-          <article><span>04</span><h3>LeBooss Business</h3><p>Analyse des partenaires, marchés et risques commerciaux.</p></article>
-          <article><span>05</span><h3>LeBooss Professional</h3><p>Réputation, identité et parcours des professionnels.</p></article>
-          <article><span>06</span><h3>LeBooss Conseils</h3><p>Prévention, stratégie et accompagnement confidentiel.</p></article>
-          <article class="booss-card--rating"><span>07</span><h3>LeBooss Rating</h3><p>Indicateurs de bonité et de croissance économique.</p><a href="#rating">Voir le rating →</a></article>
-          <article class="booss-card--boss"><span>08</span><h3>LeBoss</h3><p>Négociation et recherche de solutions équilibrées.</p><a href="#arrangement">Voir les scénarios →</a></article>
+          <article><span>01</span><h3>LeBooss Huissier</h3><p>Suivi des dossiers, preuves et exécution encadrée.</p><button class="card-link" type="button" data-booss-contact="LeBooss Huissier">Demander un accompagnement →</button></article>
+          <article><span>02</span><h3>LeBooss Détectif</h3><p>Vérifications et investigations documentées.</p><button class="card-link" type="button" data-booss-contact="LeBooss Détectif">Lancer une vérification →</button></article>
+          <article><span>03</span><h3>LeBooss International</h3><p>Confiance et vérification pour les relations transfrontalières.</p><button class="card-link" type="button" data-booss-contact="LeBooss International">Parler à un expert →</button></article>
+          <article><span>04</span><h3>LeBooss Business</h3><p>Analyse des partenaires, marchés et risques commerciaux.</p><a href="#entreprises">Découvrir la solution →</a></article>
+          <article><span>05</span><h3>LeBooss Professional</h3><p>Réputation, identité et parcours des professionnels.</p><button class="card-link" type="button" data-booss-contact="LeBooss Professional">Évaluer mon profil →</button></article>
+          <article class="booss-card--rating"><span>06</span><h3>LeBooss Score</h3><p>Indicateurs de bonité et de croissance économique.</p><a href="#rating">Voir le Score →</a></article>
+          <article class="booss-card--alert"><span>07</span><h3>LeBooss Alerte</h3><p>Lanceur d’alerte pour documenter une fraude ou une situation préoccupante.</p><button class="card-link" type="button" data-open-report>Ouvrir une alerte →</button></article>
+          <article class="booss-card--location"><span>08</span><h3>LeBooss Location</h3><p>Des repères de confiance pour louer, réserver et sécuriser un hébergement.</p><a href="#hebergement">Trouver une location →</a></article>
         </div>
       </div>
     </section>
@@ -572,7 +572,7 @@
     <section class="section testimonials">
       <div class="container">
         <p class="eyebrow reveal">Témoignages</p>
-        <h2 class="reveal">La confiance racontée par nos utilisateurs.</h2>
+        <h2 class="reveal">La confiance racontée par (Nos Lanceurs d’Alerte).</h2>
         <div class="testimonial-track reveal">
           <article>
             <p>« Le rapport de crédit LeBooss m’a aidée à présenter un dossier plus clair pour obtenir mon premier appartement. »</p>
@@ -638,6 +638,12 @@
               <option>Certificat de bonité</option>
               <option>Solution entreprise</option>
               <option>LeBooss Huissier</option>
+              <option>LeBooss Détectif</option>
+              <option>LeBooss International</option>
+              <option>LeBooss Business</option>
+              <option>LeBooss Professional</option>
+              <option>LeBooss Score</option>
+              <option>LeBooss Location</option>
               <option>Proposer un trajet</option>
               <option>Billets &amp; Tickets</option>
               <option>Racoleur / Touriste</option>
@@ -730,7 +736,7 @@
       <form id="reportForm">
         <section class="report-step is-active" data-step="1">
           <p class="step-kicker">Étape 1 sur 5</p>
-          <h3>Quel signalement souhaitez-vous faire ?</h3>
+          <h3>Quelle alerte souhaitez-vous faire ?</h3>
           <div class="scenario-options">
             <label><input type="radio" name="abuseType" value="mobile-money" required><span><b>Paiement ou mobile money</b><small>Faux transfert, retrait, code secret, remboursement</small></span></label>
             <label><input type="radio" name="abuseType" value="commerce"><span><b>Achat, vente ou livraison</b><small>Fausse boutique, acompte, produit non livré</small></span></label>
@@ -738,6 +744,19 @@
             <label><input type="radio" name="abuseType" value="investment"><span><b>Investissement ou emploi</b><small>Rendement garanti, prêt fictif, frais de recrutement</small></span></label>
             <label><input type="radio" name="abuseType" value="business"><span><b>Entreprise ou facture</b><small>Faux fournisseur, ordre de virement, coordonnées modifiées</small></span></label>
             <label><input type="radio" name="abuseType" value="other"><span><b>Autre situation</b><small>Extorsion, logement, terrain, relation ou autre</small></span></label>
+          </div>
+          <div class="other-situation-detail" id="otherSituationDetail" hidden>
+            <label>Booss concerné<select name="otherBooss" id="otherBooss">
+              <option value="">Choisir un Booss</option>
+              <option>LeBooss Business</option>
+              <option>LeBooss Détectif</option>
+              <option>LeBooss International</option>
+              <option>LeBooss Professional</option>
+              <option>LeBooss Score</option>
+              <option>LeBooss Alerte (Signaler un Abus)</option>
+              <option>LeBooss Huissier</option>
+              <option>LeBooss Location</option>
+            </select></label>
           </div>
           <label class="consent request-option"><input type="checkbox" name="requestCurrentValues" value="yes"> <span><b>Je souhaite aussi recevoir gratuitement un aperçu de mes données</b><small>Inclut, lorsqu’elles sont disponibles, les valeurs de probabilité communiquées à des partenaires contractuels durant les 12 derniers mois.</small></span></label>
         </section>
@@ -835,18 +854,18 @@
             <label class="file-drop">Recto du document<input type="file" name="identityFront" accept="image/*,.pdf" required><span>Image ou PDF · 10 Mo maximum</span></label>
             <label class="file-drop">Verso du document<input type="file" name="identityBack" accept="image/*,.pdf" required><span>Image ou PDF · 10 Mo maximum</span></label>
           </div>
-          <label class="file-drop">Preuves du signalement <span class="optional">Facultatif</span><input type="file" name="evidenceFiles" multiple accept="image/*,.pdf,.mp3,.mp4"><span>Captures, reçus, PDF, audio ou vidéo · 10 Mo maximum par fichier</span></label>
+          <label class="file-drop">Preuves de l’alerte <span class="optional">Facultatif</span><input type="file" name="evidenceFiles" multiple accept="image/*,.pdf,.mp3,.mp4"><span>Captures, reçus, PDF, audio ou vidéo · 10 Mo maximum par fichier</span></label>
           <p class="privacy-note"><b>Protection de vos données :</b> vous pouvez masquer les informations non essentielles au traitement, notamment la taille, la couleur des yeux ou d’autres mentions sans rapport avec votre demande.</p>
           <label>Relation avec les faits<select name="relationship" required><option value="victim">Je suis directement concerné(e)</option><option value="witness">Je suis témoin</option><option value="company">Je représente une entreprise</option><option value="helper">J’aide une personne concernée</option></select></label>
           <label class="consent"><input type="checkbox" name="consent" required> <span>Je confirme que ces informations sont sincères à ma connaissance et j’accepte leur examen dans le respect de la confidentialité.</span></label>
-          <div class="report-summary"><b>Vous pourrez compléter ce signalement plus tard.</b><span>Un brouillon sans les fichiers joints est conservé uniquement sur cet appareil. Une référence personnelle sera créée à la validation.</span></div>
+          <div class="report-summary"><b>Vous pourrez compléter cette alerte plus tard.</b><span>Un brouillon sans les fichiers joints est conservé uniquement sur cet appareil. Une référence personnelle sera créée à la validation.</span></div>
         </section>
 
         <div class="report-actions">
           <button class="text-button" type="button" id="reportBack" hidden>← Retour</button>
           <span class="report-draft" id="draftStatus">Brouillon conservé sur cet appareil</span>
           <button class="button button--navy" type="button" id="reportNext" data-i18n="continue">Continuer</button>
-          <button class="button button--report" type="submit" id="reportSubmit" hidden data-i18n="sendReport">Envoyer le signalement</button>
+          <button class="button button--report" type="submit" id="reportSubmit" hidden data-i18n="sendReport">Envoyer l’alerte</button>
         </div>
         <p class="form-status" id="reportStatus" role="status" aria-live="polite"></p>
       </form>
@@ -857,5 +876,9 @@
     <p><b>Votre confidentialité compte.</b> Ce site de démonstration n’utilise que les fonctions nécessaires à son affichage.</p>
     <button class="button button--small button--navy" type="button" id="cookieAccept">J’ai compris</button>
   </div>
+
+  <button class="back-to-top" id="backToTop" type="button" aria-label="Revenir en haut de la page" title="Revenir en haut">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 14 6-6 6 6"></path><path d="M12 8v10"></path></svg>
+  </button>
 </body>
 </html>

@@ -59,7 +59,9 @@ const searchablePages = [
   { title: 'Touriste', href: '#touriste', keywords: 'voyage séjour' },
   { title: 'Billets & Tickets', href: '#billetterie', keywords: 'concert match bus train billetterie' },
   { title: 'Certificat de bonité', href: '#offre', keywords: 'solvabilité particulier' },
-  { title: 'LeBooss Rating', href: '#rating', keywords: 'score croissance entreprise' },
+  { title: 'LeBooss Score', href: '#rating', keywords: 'rating score croissance entreprise' },
+  { title: 'LeBooss Business', href: '#entreprises', keywords: 'entreprise partenaire marché' },
+  { title: 'LeBooss Location', href: '#hebergement', keywords: 'location hébergement réservation' },
   { title: 'Taux d’arnaque par ville', href: '#observatoire', keywords: 'escroquerie fraude indicateur' },
   { title: 'Négociation', href: '#arrangement', keywords: 'scénarios arrangement solution' },
   { title: 'LeBooss Alerte', href: '#', keywords: 'fraude plainte signalement abus', action: 'report' }
@@ -208,6 +210,14 @@ document.querySelectorAll('[data-propose-trip]').forEach((button) => {
   });
 });
 
+document.querySelectorAll('[data-booss-contact]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const subject = contactForm?.querySelector('select[name="subject"]');
+    if (subject) subject.value = button.dataset.boossContact;
+    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
 const accountToggle = document.querySelector('#accountToggle');
 const accountDialog = document.querySelector('#accountDialog');
 const accountForm = document.querySelector('#accountForm');
@@ -247,6 +257,14 @@ cookieAccept?.addEventListener('click', () => {
   sessionStorage.setItem('lebooss-cookie-notice', 'accepted');
   cookieBanner?.classList.add('is-hidden');
 });
+
+const backToTop = document.querySelector('#backToTop');
+function updateBackToTop() {
+  backToTop?.classList.toggle('is-visible', window.scrollY > 420);
+}
+window.addEventListener('scroll', updateBackToTop, { passive: true });
+backToTop?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+updateBackToTop();
 
 document.querySelector('#year').textContent = String(new Date().getFullYear());
 
@@ -324,6 +342,8 @@ const reportNext = document.querySelector('#reportNext');
 const reportBack = document.querySelector('#reportBack');
 const reportSubmit = document.querySelector('#reportSubmit');
 const reportStatus = document.querySelector('#reportStatus');
+const otherSituationDetail = document.querySelector('#otherSituationDetail');
+const otherBooss = document.querySelector('#otherBooss');
 const maxReportSteps = 5;
 let currentReportStep = 1;
 
@@ -382,6 +402,17 @@ reportBack?.addEventListener('click', () => showReportStep(currentReportStep - 1
 
 const previousAddress = document.querySelector('#previousAddress');
 const addressChangedControls = document.querySelectorAll('input[name="addressChanged"]');
+
+function updateOtherSituation() {
+  const isOther = reportForm?.elements.abuseType?.value === 'other';
+  if (otherSituationDetail) otherSituationDetail.hidden = !isOther;
+  if (otherBooss) {
+    otherBooss.required = isOther;
+    if (!isOther) otherBooss.value = '';
+  }
+}
+document.querySelectorAll('input[name="abuseType"]').forEach((control) => control.addEventListener('change', updateOtherSituation));
+
 function updatePreviousAddress() {
   const hasChanged = reportForm?.elements.addressChanged?.value === 'yes';
   if (previousAddress) previousAddress.hidden = !hasChanged;
@@ -454,6 +485,7 @@ function restoreReportDraft() {
 restoreReportDraft();
 updateDocumentTypes();
 restoreReportDraft();
+updateOtherSituation();
 updatePreviousAddress();
 reportForm?.addEventListener('input', saveReportDraft);
 reportForm?.addEventListener('submit', (event) => {
@@ -466,6 +498,7 @@ reportForm?.addEventListener('submit', (event) => {
   reportStatus.textContent = `Dossier complété · Référence ${reference}. La transmission sécurisée à l’équipe de traitement sera activée lors du prochain sprint.`;
   localStorage.removeItem('lebooss-report-draft');
   reportForm.reset();
+  updateOtherSituation();
   updatePreviousAddress();
   updateDocumentTypes();
   reportSubmit.disabled = true;
@@ -482,7 +515,7 @@ document.querySelectorAll('[data-scenario]').forEach((button) => {
 // Bascule linguistique FR / EN sur les zones principales du parcours.
 const translations = {
   fr: {
-    topline: 'LeBooss aujourd’hui : l’actualité autour des escroqueries en général.', news: 'Actualités', help: 'Besoin d’aide ?', individuals: 'Particuliers', companies: 'Entreprises', scoring: 'Scoring & données', about: 'À propos', report: 'LeBooss Alerte', heroEyebrow: 'La confiance dans l’économie africaine', heroTitle: 'Comprendre la solvabilité.<br><span>Décider avec confiance.</span>', heroLead: 'LeBooss aujourd’hui : une actualité claire autour des escroqueries en général, pour mieux les comprendre et les éviter.', certificate: 'Obtenir mon certificat', discover: 'Découvrir comment ça marche', riskTitle: 'Le risque d’arnaque, ville par ville.', ecosystemTitle: 'Huit expertises, un même réflexe de confiance.', ratingTitle: 'Bonité aujourd’hui. Capacité de croissance demain.', arrangementTitle: 'Trois scénarios pour renouer le dialogue.', reportIntro: 'Votre récit peut être complété progressivement. Commencez avec ce que vous savez aujourd’hui.', continue: 'Continuer', sendReport: 'Envoyer le signalement'
+    topline: 'LeBooss aujourd’hui : l’actualité autour des escroqueries en général.', news: 'Actualités', help: 'Besoin d’aide ?', individuals: 'Particuliers', companies: 'Entreprises', scoring: 'Scoring & données', about: 'À propos', report: 'LeBooss Alerte', heroEyebrow: 'La confiance dans l’économie africaine', heroTitle: 'Comprendre la solvabilité.<br><span>Décider avec confiance.</span>', heroLead: 'LeBooss aujourd’hui : une actualité claire autour des escroqueries en général, pour mieux les comprendre et les éviter.', certificate: 'Obtenir mon certificat', discover: 'Découvrir comment ça marche', riskTitle: 'Le risque d’arnaque, ville par ville.', ecosystemTitle: 'Huit expertises, un même réflexe de confiance.', ratingTitle: 'Bonité aujourd’hui. Capacité de croissance demain.', arrangementTitle: 'Trois scénarios pour renouer le dialogue.', reportIntro: 'Votre récit peut être complété progressivement. Commencez avec ce que vous savez aujourd’hui.', continue: 'Continuer', sendReport: 'Envoyer l’alerte'
   },
   en: {
     topline: 'LeBooss today: news and insights about scams in general.', news: 'News', help: 'Need help?', individuals: 'Individuals', companies: 'Businesses', scoring: 'Scoring & data', about: 'About', report: 'Whistleblower', heroEyebrow: 'Trust in the African economy', heroTitle: 'Understand creditworthiness.<br><span>Decide with confidence.</span>', heroLead: 'LeBooss today: clear news and insights about scams in general, to better understand and avoid them.', certificate: 'Get my certificate', discover: 'See how it works', riskTitle: 'Scam risk, city by city.', ecosystemTitle: 'Eight areas of expertise, one trust reflex.', ratingTitle: 'Creditworthiness today. Growth capacity tomorrow.', arrangementTitle: 'Three scenarios to reopen dialogue.', reportIntro: 'Your report can be completed progressively. Start with what you know today.', continue: 'Continue', sendReport: 'Send report'
